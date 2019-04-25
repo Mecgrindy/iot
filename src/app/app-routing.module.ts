@@ -2,7 +2,13 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' }
+  {
+    path: '',
+    redirectTo: '/slides',
+    pathMatch: 'full'
+  },
+  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
+  { path: 'slides', loadChildren: './slides/slides.module#SlidesPageModule' }
 ];
 @NgModule({
   imports: [
@@ -10,4 +16,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

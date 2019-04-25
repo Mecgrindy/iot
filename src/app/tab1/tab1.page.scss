@@ -1,4 +1,9 @@
-.welcome-card ion-img {
-  max-height: 35vh;
-  overflow: hidden;
+ion-card{
+  background: rgb(74, 86, 117);
+}
+
+ion-item{
+  --background: transparent;
+  --border-width: 0;
+  --inner-border-width: 0;
 }
