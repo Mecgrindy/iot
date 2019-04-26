@@ -39,7 +39,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: './sector/sector.module#SectorPageModule'
+            loadChildren: '../sector/sector.module#SectorPageModule'
           }
         ]
       },
