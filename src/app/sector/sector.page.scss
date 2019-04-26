@@ -1,0 +1,39 @@
+ion-header {
+    background-image: linear-gradient(to right, #D37fcc, transparent);
+}
+
+ion-toolbar {
+    --background: transparent;
+}
+
+ion-card {
+    background-image: linear-gradient(#434d6e, rgb(74, 86, 117));
+}
+
+ion-card-subtitle {
+    display: flex;
+    align-items: center;
+}
+
+ion-card-title {
+    padding-right: 12px;
+}
+
+ion-item {
+    --background: transparent;
+    --border-width: 0;
+    --inner-border-width: 0;
+}
+
+.btn-add-sector {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(transparent, #3c4564, #3c4564);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+    z-index: 10;
+}

@@ -1,0 +1,43 @@
+.sector-list {
+    padding-bottom: 66px;
+}
+
+ion-card {
+    background-image: linear-gradient(#434d6e, rgb(74, 86, 117));
+}
+
+ion-card-subtitle {
+    display: flex;
+    align-items: center;
+}
+
+ion-card-title {
+    padding-right: 12px;
+}
+
+ion-item {
+    --background: transparent;
+    --border-width: 0;
+    --inner-border-width: 0;
+}
+
+ion-input {
+    --padding-start: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+}
+
+ion-col {
+    margin: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ion-col:not(:last-child) {
+    border: 1px solid #697597;
+}
+
+ion-card-header {
+    padding-bottom: 0;
+}

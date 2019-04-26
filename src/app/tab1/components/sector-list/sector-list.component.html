@@ -1,0 +1,108 @@
+<div *ngIf="sectorList && sectorList.length > 0" class="sector-list">
+  <ion-card *ngFor="let sector of sectorList; let i = index" (click)="navigate(sector.id)">
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-input placeholder="Szektor név" style="flex: 2;" clear-input [value]="sector.data.name"
+          (click)="prevent($event)" (ionBlur)="UpdateSectorName($event, i)"></ion-input>
+        <span class="space-filler"></span>
+        <ion-button fill="clear" (click)="DeleteSector($event, i)"
+          [disabled]="sector.data.zones && sector.data.zones.length > 0">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-card-subtitle>
+      <!-- <ion-card-title> -->
+      <!-- <ion-input placeholder="Zóna név" clear-input [value]="sector.data.zones[0].name"
+            (ionBlur)="UpdateZoneName($event, i)"></ion-input> -->
+      <!-- </ion-card-title> -->
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid fixed="true">
+        <ion-row align-items-center>
+          <ion-col *ngFor="let zone of sector.data.zones; let z = index" (click)="SelectZone($event);"
+            (press)="DeleteZone( i, z)">
+            {{zone.name}}
+          </ion-col>
+          <ion-col>
+            <ion-button style="flex: 1;" fill="outline" color="secondary" (click)="AddZone($event, i)">
+              <ion-icon slot="start" name="add"></ion-icon>Zóna
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+</div>
+
+<!-- <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Szektor 1</ion-card-subtitle>
+      <ion-card-title>Zóna 1 <ion-button fill="clear" color="secondary" style="margin-top: -10px;">
+          <ion-icon slot="start" name="add"></ion-icon>Zóna
+        </ion-button>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-item style="background-image: linear-gradient(to right, transparent, #d339398a);">
+      <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
+      <ion-label>
+        <p>CO&nbsp;&nbsp; <b style="color: white;">50 ppm</b> (+110%) <ion-icon slot="start" color="danger"
+            name="trending-up">
+          </ion-icon>
+        </p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item style="background-image: linear-gradient(to right, transparent, #ffcc009a);">
+      <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
+      <ion-label>
+        <p>CO2 <b style="color: white;">270 ppm</b> (+10%) <ion-icon slot="start" color="danger" name="trending-up">
+          </ion-icon>
+        </p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
+      <ion-label>
+        <p>VOC <b style="color: white;">30 g/l</b> (-10%) <ion-icon slot="start" color="success" name="trending-down">
+          </ion-icon>
+        </p>
+      </ion-label>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Szektor 2</ion-card-subtitle>
+      <ion-card-title>Zóna 1 <ion-button fill="clear" color="secondary" style="margin-top: -10px;">
+          <ion-icon slot="start" name="add"></ion-icon>Zóna
+        </ion-button>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-item>
+      <ion-icon slot="start" color="danger" name="radio-button-on"></ion-icon>
+      <ion-label>
+        <p>CO&nbsp;&nbsp; </p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item style="background-image: linear-gradient(to right, transparent, #ffcc009a);">
+      <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
+      <ion-label>
+        <p>CO2 <b style="color: white;">270 ppm</b> (+10%) <ion-icon slot="start" color="danger" name="trending-up">
+          </ion-icon>
+        </p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" color="medium" name="radio-button-off"></ion-icon>
+      <ion-label>
+        <p>VOC</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-card> -->

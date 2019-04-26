@@ -1,77 +1,10 @@
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Szektor 1</ion-card-subtitle>
-      <ion-card-title>Zóna 1 <ion-button fill="clear" color="secondary" style="margin-top: -10px;">
-          <ion-icon slot="start" name="add"></ion-icon>Zóna
-        </ion-button>
-      </ion-card-title>
-    </ion-card-header>
+  <iot-sector-list [sectorList]="sectorList"></iot-sector-list>
 
-    <ion-item style="background-image: linear-gradient(to right, transparent, #d339398a);">
-      <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
-      <ion-label>
-        <p>CO&nbsp;&nbsp; <b style="color: white;">50 ppm</b> (+110%) <ion-icon slot="start" color="danger"
-            name="trending-up">
-          </ion-icon>
-        </p>
-      </ion-label>
-    </ion-item>
+  <div class="btn-add-sector">
+    <ion-button fill="clear" color="primary" (click)="AddSector()">
+      <ion-icon slot="start" name="add"></ion-icon>szektor
+    </ion-button>
+  </div>
 
-    <ion-item style="background-image: linear-gradient(to right, transparent, #ffcc009a);">
-      <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
-      <ion-label>
-        <p>CO2 <b style="color: white;">270 ppm</b> (+10%) <ion-icon slot="start" color="danger" name="trending-up">
-          </ion-icon>
-        </p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
-      <ion-label>
-        <p>VOC <b style="color: white;">30 g/l</b> (-10%) <ion-icon slot="start" color="success" name="trending-down">
-          </ion-icon>
-        </p>
-      </ion-label>
-    </ion-item>
-
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Szektor 2</ion-card-subtitle>
-      <ion-card-title>Zóna 1 <ion-button fill="clear" color="secondary" style="margin-top: -10px;">
-          <ion-icon slot="start" name="add"></ion-icon>Zóna
-        </ion-button>
-      </ion-card-title>
-    </ion-card-header>
-
-    <ion-item>
-      <ion-icon slot="start" color="danger" name="radio-button-on"></ion-icon>
-      <ion-label>
-        <p>CO&nbsp;&nbsp; </p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item style="background-image: linear-gradient(to right, transparent, #ffcc009a);">
-      <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
-      <ion-label>
-        <p>CO2 <b style="color: white;">270 ppm</b> (+10%) <ion-icon slot="start" color="danger" name="trending-up">
-          </ion-icon>
-        </p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon slot="start" color="medium" name="radio-button-off"></ion-icon>
-      <ion-label>
-        <p>VOC</p>
-      </ion-label>
-    </ion-item>
-
-  </ion-card>
-  <ion-button style="margin-left: 10px; margin-right: 10px;" expand="block" fill="outline" color="medium">
-    <ion-icon slot="start" name="add"></ion-icon>szektor
-  </ion-button>
 </ion-content>

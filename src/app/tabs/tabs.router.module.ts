@@ -35,6 +35,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'sectors/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: './sector/sector.module#SectorPageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/home/watcher',
         pathMatch: 'full'
@@ -54,4 +63,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

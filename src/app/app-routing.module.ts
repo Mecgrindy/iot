@@ -8,7 +8,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  { path: 'slides', loadChildren: './slides/slides.module#SlidesPageModule' }
+  { path: 'slides', loadChildren: './slides/slides.module#SlidesPageModule' },
 ];
 @NgModule({
   imports: [
