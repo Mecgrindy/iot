@@ -18,7 +18,7 @@
     <ion-icon name="qr-scanner">Scan Code</ion-icon>
   </ion-button>
 
-  <div id="contentToConvert">
+  <div id="printableArea">
   <ion-card *ngIf="createdCode">
     <qrcode [qrdata]="createdCode" [size]="256" [level]="'M'"></qrcode>
     <ion-card-content>
