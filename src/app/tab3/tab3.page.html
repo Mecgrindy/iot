@@ -1,9 +1,37 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      QR CODE POC
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content padding>
+  <ion-item>
+    <ion-input type="text" placeholder="My QR data" [(ngModel)]="qrData">
+    </ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="createCode()">
+    <ion-icon name="barcode">Create Code</ion-icon>
+  </ion-button>
+  <ion-button expand="full" (click)="scanCode()">
+    <ion-icon name="qr-scanner">Scan Code</ion-icon>
+  </ion-button>
+
+  <div id="printableArea">
+  <ion-card *ngIf="createdCode">
+    <qrcode [qrdata]="createdCode" [size]="256" [level]="'M'"></qrcode>
+    <ion-card-content>
+      <p>Value: {{ createdCode }}</p>
+    </ion-card-content>
+  </ion-card>
+  </div>
+  
+
+  <ion-card *ngIf="scannedCode">
+    <ion-card-content>
+      Result from Scan: {{ scannedCode }}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

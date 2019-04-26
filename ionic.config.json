@@ -1,6 +1,8 @@
 {
   "name": "iotApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "d0adaa55"
 }

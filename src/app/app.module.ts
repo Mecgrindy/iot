@@ -9,15 +9,26 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+// import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { QRCodeModule } from 'angularx-qrcode';
+import { Screenshot } from '@ionic-native/screenshot/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { ModalController } from '@ionic/angular';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, QRCodeModule],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    BarcodeScanner,
+    Screenshot,
+    PhotoViewer,
+    ModalController
   ],
   bootstrap: [AppComponent]
 })

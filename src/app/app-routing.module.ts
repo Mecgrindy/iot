@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/slides',
+    redirectTo: '/home/report',
     pathMatch: 'full'
   },
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
