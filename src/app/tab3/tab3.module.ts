@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab3Page } from './tab3.page';
 import { QRCodeModule } from 'angularx-qrcode';
 import { Screenshot } from '@ionic-native/screenshot/ngx';
+import { QrmodalPage } from '../qrmodal/qrmodal.page';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { Screenshot } from '@ionic-native/screenshot/ngx';
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     QRCodeModule
   ],
-  declarations: [Tab3Page],
+  entryComponents: [QrmodalPage],
+  declarations: [Tab3Page, QrmodalPage],
   providers: [
     Screenshot
   ]

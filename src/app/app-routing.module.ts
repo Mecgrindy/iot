@@ -4,11 +4,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/slides',
+    redirectTo: '/home/settings',
     pathMatch: 'full'
   },
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  { path: 'slides', loadChildren: './slides/slides.module#SlidesPageModule' }
+  { path: 'slides', loadChildren: './slides/slides.module#SlidesPageModule' },
 ];
 @NgModule({
   imports: [

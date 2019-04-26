@@ -1,0 +1,7 @@
+<ion-content>
+  <div *ngIf="createdCode" class="qr-panel">
+      <span style="color: black">{{navp}}</span>
+    <qrcode [qrdata]="createdCode" style="width: 90px; height: 90px;" [level]="'M'"></qrcode>
+    <span style="color: black">{{date}}</span>
+  </div>
+</ion-content>

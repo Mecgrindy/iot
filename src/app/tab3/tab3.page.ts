@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Screenshot } from '@ionic-native/screenshot/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { ModalController } from '@ionic/angular';
+import { QrmodalPage } from '../qrmodal/qrmodal.page';
 
 @Component({
   selector: 'app-tab3',
@@ -15,51 +17,27 @@ export class Tab3Page {
   pdfObj = null;
 
   constructor(
-    private photoViewer: PhotoViewer,
+    private photoViewer: PhotoViewer, public modalController: ModalController,
     private barcodeScanner: BarcodeScanner, public screenshot: Screenshot) {
 
   }
 
-  generatePdf() {
-      
-
-    // Take a screenshot and save to file
-    this.screenshot.save('png', 256, this.qrData+'_zone').then(onSuccess => {
-      console.log(onSuccess.filePath);
-      this.photoViewer.show(onSuccess.filePath, this.qrData+'_zone'+'.png', {share: true});
-      /*this.fileOpener.open('file://'+onSuccess.filePath, 'application/png')
-      .then(() => console.log('File is opened'))
-      .catch(e => console.log('Error opening file', e));*/
-    }, onError => {
-      console.error(onError);
-    });
-            
-          
-      
-
+  async presentModal() {
+    if(this.createdCode){
+      const modal = await this.modalController.create({
+        component: QrmodalPage,
+        componentProps: { value: this.createdCode }
+      });
+      return await modal.present();
+    } else {
+      alert('QR string cannot be null or empty!');
+    }
   }
 
-  generatePrint(){
-    var tmp = document.createDocumentFragment(),
-    printme = document.getElementById('printableArea').cloneNode(true);
-    while(document.body.firstChild) {
-        // move elements into the temporary space
-        tmp.appendChild(document.body.firstChild);
-    }
-    // put the cloned printable thing back, and print
-    document.body.appendChild(printme);
-    window.print();
-
-    while(document.body.firstChild) {
-        // empty the body again (remove the clone)
-        document.body.removeChild(document.body.firstChild);
-    }
-    // re-add the temporary fragment back into the page, restoring initial state
-    document.body.appendChild(tmp);
-  }
 
   createCode() {
     this.createdCode = this.qrData;
+    this.presentModal();
   }
 
   scanCode() {

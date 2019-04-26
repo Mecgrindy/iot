@@ -13,6 +13,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { QRCodeModule } from 'angularx-qrcode';
 import { Screenshot } from '@ionic-native/screenshot/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { ModalController } from '@ionic/angular';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     BarcodeScanner,
     Screenshot,
-    PhotoViewer
+    PhotoViewer,
+    ModalController
   ],
   bootstrap: [AppComponent]
 })
