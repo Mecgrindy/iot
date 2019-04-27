@@ -42,6 +42,9 @@ export class QrmodalPage implements OnInit {
       }, onError => {
         console.error(onError);
       });
+    } else {
+      alert('Only supported on mobile!');
+      this.dismiss();
     }
     
   }

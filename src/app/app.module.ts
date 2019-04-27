@@ -15,11 +15,12 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { Screenshot } from '@ionic-native/screenshot/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { ModalController } from '@ionic/angular';
+import { QrmodalPage } from './qrmodal/qrmodal.page';
 
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, QrmodalPage],
+  entryComponents: [QrmodalPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, QRCodeModule],
   providers: [
     StatusBar,
