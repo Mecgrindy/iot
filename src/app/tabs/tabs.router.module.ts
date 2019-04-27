@@ -44,6 +44,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'zone',
+        children: [
+          {
+            path: '',
+            loadChildren: '../zone/zone.module#ZonePageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/home/watcher',
         pathMatch: 'full'
