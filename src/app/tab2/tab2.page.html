@@ -1,48 +1,58 @@
-  <ion-header>
-      <ion-toolbar>
-        <ion-title>
-            Charts in Ionic 2
-        </ion-title>
-      </ion-toolbar>
-    </ion-header>
-  
-  <ion-content>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Jelentések
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-      <ion-card>
-          <ion-card-header>
-            Bar Chart Own
-          </ion-card-header>
-          <ion-card-content>
-            <ion-item-divider></ion-item-divider>
-            <canvas #barCanvasOwn></canvas>
-          </ion-card-content>
-        </ion-card>
-  
-      <ion-card>
-        <ion-card-header>
-          Bar Chart
-        </ion-card-header>
-        <ion-card-content>
-          <canvas #barCanvas></canvas>
-        </ion-card-content>
-      </ion-card>
-  
-      <ion-card>
-        <ion-card-header>
-          Doughnut Chart
-        </ion-card-header>
-        <ion-card-content>
-          <canvas #doughnutCanvas></canvas>
-        </ion-card-content>
-      </ion-card>
-  
-      <ion-card>
-        <ion-card-header>
-          Line Chart
-        </ion-card-header>
-        <ion-card-content>
-          <canvas #lineCanvas></canvas>
-        </ion-card-content>
-      </ion-card>
-  
-  </ion-content>
+<ion-content>
+
+  <ion-item>
+    <ion-label>Idő intervallum:</ion-label>
+    <ion-select [(ngModel)]="selectedHours" (ionChange)="selectorHours()" placeholder="Válasszon">
+      <ion-select-option selected value="1">1 órája</ion-select-option>
+      <ion-select-option value="2">2 órája</ion-select-option>
+      <ion-select-option value="8">8 órája</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-card>
+    <ion-card-header>
+      CO
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      CO2
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #lineCanvas2></canvas>
+    </ion-card-content>
+  </ion-card>
+
+
+  <!--<ion-card>
+    <ion-card-header>
+      CO
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvasOwn></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      CO2
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>-->
+
+
+</ion-content>
