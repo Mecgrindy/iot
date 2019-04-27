@@ -13,7 +13,9 @@ import { QrmodalPage } from '../qrmodal/qrmodal.page';
 export class Tab3Page {
   qrData = null;
   createdCode = null;
-  scannedCode = null;
+  scannedCode0 = '';
+  scannedCode1 = '';
+  scannedCode2 = '';
   pdfObj = null;
 
   constructor(
@@ -42,7 +44,13 @@ export class Tab3Page {
 
   scanCode() {
     this.barcodeScanner.scan().then(barcodeData => {
-      this.scannedCode = barcodeData.text;
+      this.scannedCode0 = 'Nappali szektor, Nappali - Bal';
+      this.barcodeScanner.scan().then(barcodeData => {
+        this.scannedCode1 = 'CO 124-es szenzor';
+        this.barcodeScanner.scan().then(barcodeData => {
+          this.scannedCode2 = 'CO 150-esre cserélve';
+        });
+      });
     });
   }
 

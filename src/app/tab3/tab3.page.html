@@ -8,29 +8,52 @@
 
 <ion-content padding>
   <ion-item>
+    <ion-label>Szektor</ion-label>
+    <ion-select placeholder="Válasszon">
+      <ion-select-option selected value="1">Nappali</ion-select-option>
+      <ion-select-option value="2">Konya</ion-select-option>
+      <ion-select-option value="8">Fürdőszoba</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Zóna</ion-label>
+    <ion-select placeholder="Válasszon">
+      <ion-select-option selected value="1">Nappali - Bal</ion-select-option>
+      <ion-select-option value="2">Nappali - Jobb</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <!--<ion-item>
     <ion-input type="text" placeholder="My QR data" [(ngModel)]="qrData">
     </ion-input>
   </ion-item>
   <ion-button expand="full" (click)="createCode()">
     <ion-icon name="barcode">Create Code</ion-icon>
-  </ion-button>
+  </ion-button>-->
   <ion-button expand="full" (click)="scanCode()">
-    <ion-icon name="qr-scanner">Scan Code</ion-icon>
+    <ion-icon name="qr-scanner">Csere indítása</ion-icon>
   </ion-button>
 
   <div id="printableArea">
-  <ion-card *ngIf="createdCode">
-    <qrcode [qrdata]="createdCode" [size]="256" [level]="'M'"></qrcode>
-    <ion-card-content>
-      <p>Value: {{ createdCode }}</p>
-    </ion-card-content>
-  </ion-card>
+    <ion-card *ngIf="createdCode">
+      <qrcode [qrdata]="createdCode" [size]="256" [level]="'M'"></qrcode>
+      <ion-card-content>
+        <p>Value: {{ createdCode }}</p>
+      </ion-card-content>
+    </ion-card>
   </div>
-  
 
-  <ion-card *ngIf="scannedCode">
+
+  <ion-card>
     <ion-card-content>
-      Result from Scan: {{ scannedCode }}
+      <ion-item *ngIf="scannedCode0">
+        {{scannedCode0}}
+      </ion-item>
+      <ion-item *ngIf="scannedCode1">
+        {{scannedCode1}}
+      </ion-item>
+      <ion-item *ngIf="scannedCode2">
+        {{scannedCode2}}
+      </ion-item>
     </ion-card-content>
   </ion-card>
 

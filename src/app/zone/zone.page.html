@@ -20,7 +20,7 @@
 <ion-content>
   <ion-fab vertical="top" horizontal="center" edge slot="fixed">
     <ion-fab-button color="light">
-      <ion-icon name="barcode" color="primary"></ion-icon>
+      <ion-icon name="barcode" color="primary" (click)="createCode()"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   <div *ngIf="sector && sector.zones">

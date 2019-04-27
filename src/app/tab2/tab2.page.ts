@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { config } from './../app.config';
 import { Chart } from 'chart.js';
 import * as ChartAnnotation from 'chartjs-plugin-annotation';
 
@@ -49,18 +50,26 @@ export class Tab2Page {
             var hourago = new Date(today.getTime() + (1000 * 60 * 60));
             var hourago = new Date(hourago.getTime() + (1000 * 60 * 60));
             var num = +this.selectedHours;
-            console.log('ASDASDASDASDAS'  + num);
-            
-            for (var i = 0; i < num; i++){
+            console.log('ASDASDASDASDAS' + num);
+
+            for (var i = 0; i < num; i++) {
                 var hourago = new Date(hourago.getTime() - (1000 * 60 * 60));
             }
-            this.httpClient.get('http://165.227.145.200/logs-41238/?from=' + hourago.toISOString().split('.')[0]).subscribe((result) => {
+            //var options = { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
+            console.log('url');
+            console.log(config.baseUrl + '/sensors/' + hourago.getTime());
+            this.httpClient.get(config.baseUrl + '/sensors/' + hourago.getTime()).subscribe((result) => {
+                console.log(result);
+                
                 this.sensorList = [];
                 this.dateList = [];
                 this.coValuesList = [];
                 this.co2ValuesList = [];
                 this.lastMinute = 0;
                 this.sensorList = result;
+                console.log('SENSORLIST');
+                console.log(this.sensorList);
+                
                 this.sensorList.forEach(element => {
                     //console.log(element.timestamp);
                     //console.log(new Date(element.timestamp).getHours());
@@ -96,7 +105,7 @@ export class Tab2Page {
     }
 
 
-    async selectorHours(){
+    async selectorHours() {
         await this.getSensors();
         this.drawCharts();
     }
@@ -108,9 +117,9 @@ export class Tab2Page {
         this.drawCharts();
     }
 
-    drawCharts(){
+    drawCharts() {
         console.log('chartos meghivodik');
-        
+
         this.lineChart = new Chart(this.lineCanvas.nativeElement, {
 
             type: 'line',
@@ -160,7 +169,7 @@ export class Tab2Page {
                         pointHitRadius: 10,
                         data: this.coWarningLine,
                         spanGaps: false,
-                        borderWidth : '1'
+                        borderWidth: '1'
                     },
                     {
                         label: "Danger",
@@ -183,7 +192,7 @@ export class Tab2Page {
                         pointHitRadius: 10,
                         data: this.coDangerLine,
                         spanGaps: false,
-                        borderWidth : '1'
+                        borderWidth: '1'
                     }
                 ]
             },
@@ -249,7 +258,7 @@ export class Tab2Page {
                         pointHitRadius: 10,
                         data: this.co2WarningLine,
                         spanGaps: false,
-                        borderWidth : '1'
+                        borderWidth: '1'
                     },
                     {
                         label: "Danger",
@@ -272,7 +281,7 @@ export class Tab2Page {
                         pointHitRadius: 10,
                         data: this.co2DangerLine,
                         spanGaps: false,
-                        borderWidth : '1'
+                        borderWidth: '1'
                     }
                 ]
             },
@@ -287,18 +296,18 @@ export class Tab2Page {
                 },
                 annotation: {
                     annotations: [{
-                      type: 'line',
-                      mode: 'horizontal',
-                      scaleID: 'y-axis-0',
-                      value: 5,
-                      borderColor: 'rgb(75, 192, 192)',
-                      borderWidth: 4,
-                      label: {
-                        enabled: false,
-                        content: 'Test label'
-                      }
+                        type: 'line',
+                        mode: 'horizontal',
+                        scaleID: 'y-axis-0',
+                        value: 5,
+                        borderColor: 'rgb(75, 192, 192)',
+                        borderWidth: 4,
+                        label: {
+                            enabled: false,
+                            content: 'Test label'
+                        }
                     }]
-                  }
+                }
             }
 
 
