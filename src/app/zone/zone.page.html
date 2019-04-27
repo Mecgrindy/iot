@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-button slot="end" fill="clear" color="medium" disabled>
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-button>
+    <!-- <ion-button fill="clear" color="medium" slot="start" routerLink="/home" >
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button> -->
+
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" style="margin-top: -30px;" *ngIf="sector && sector.zones">
+      {{sector.zones[zoneIndex].name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="top" horizontal="center" edge slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon name="barcode" color="primary"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div *ngIf="sector && sector.zones">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="home" slot="start"></ion-icon>
+        <ion-label>
+          Helység típusa
+        </ion-label>
+        <span slot="end">Aula</span>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="square" slot="start"></ion-icon>
+        <ion-label>
+          Alapterület
+        </ion-label>
+        <span slot="end">10 m<sup>2</sup></span>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-round-up" slot="start"></ion-icon>
+        <ion-label>
+          Belmagasság
+        </ion-label>
+        <span slot="end">3 m</span>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="contacts" slot="start"></ion-icon>
+        <ion-label>
+          Személyek száma
+        </ion-label>
+        <span slot="end">4</span>
+      </ion-item>
+    </ion-list>
+    <ion-card>
+      <ion-item>
+        <ion-toggle color="success" checked></ion-toggle>
+        <ion-label>
+          <p>CO&nbsp;&nbsp; <b style="color: white;">6 ppm</b></p>
+        </ion-label>
+        <ion-button fill="clear" color="primary" slot="end">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-toggle color="success" checked></ion-toggle>
+        <ion-label>
+          <p>CO2&nbsp;&nbsp; <b style="color: white;">250 ppm</b></p>
+        </ion-label>
+        <ion-button fill="clear" color="primary" slot="end">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-toggle color="success"></ion-toggle>
+        <ion-label>
+          <p>DUST&nbsp;&nbsp;</p>
+        </ion-label>
+        <ion-button fill="clear" color="primary" slot="end">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <div class="btn-add-sector">
+    <ion-button fill="clear" (click)="AddZone()">
+      <ion-icon slot="start" name="add"></ion-icon>szenzor
+    </ion-button>
+  </div>
+</ion-content>

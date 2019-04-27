@@ -18,10 +18,11 @@
 
 <ion-content>
   <div *ngIf="sector && sector.zones">
-    <ion-card *ngFor="let zone of sector.zones; let i = index">
+    <ion-card *ngFor="let zone of sector.zones; let i = index" (click)="navigate(i)">
       <ion-card-header>
         <ion-card-subtitle>
-          <ion-input placeholder="Zóna név" style="flex: 2;" clear-input [value]="zone.name" (click)="prevent($event)">
+          <ion-input placeholder="Zóna név" style="flex: 2;" clear-input [value]="zone.name" (click)="prevent($event)"
+            (ionBlur)="UpdateZoneName($event, i)">
           </ion-input> <span class="space-filler"></span>
           <ion-button fill="clear" color="secondary" (click)="DeleteZone($event, i)">
             <ion-icon name="trash"></ion-icon>
@@ -29,33 +30,23 @@
         </ion-card-subtitle>
       </ion-card-header>
 
-      <!-- <ion-item style="background-image: linear-gradient(to right, transparent, #d339398a);">
-            <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
-            <ion-label>
-              <p>CO&nbsp;&nbsp; <b style="color: white;">50 ppm</b> (+110%) <ion-icon slot="start" color="danger"
-                  name="trending-up">
-                </ion-icon>
-              </p>
-            </ion-label>
-          </ion-item>
-      
-          <ion-item style="background-image: linear-gradient(to right, transparent, #ffcc009a);">
-            <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
-            <ion-label>
-              <p>CO2 <b style="color: white;">270 ppm</b> (+10%) <ion-icon slot="start" color="danger" name="trending-up">
-                </ion-icon>
-              </p>
-            </ion-label>
-          </ion-item>
-      
-          <ion-item>
-            <ion-icon slot="start" color="success" name="radio-button-on"></ion-icon>
-            <ion-label>
-              <p>VOC <b style="color: white;">30 g/l</b> (-10%) <ion-icon slot="start" color="success" name="trending-down">
-                </ion-icon>
-              </p>
-            </ion-label>
-          </ion-item> -->
+      <div *ngIf="zone.items && zone.items.length > 0"></div>
+      <ion-item *ngFor="let item of zone.items"
+        [ngClass]="{'warning': item.value >= item.warning, 'danger': item.value >= item.danger }">
+        <ion-icon slot="start" *ngIf="item.status==='active'" color="success" name="radio-button-on"></ion-icon>
+        <ion-icon slot="start" *ngIf="item.status==='disabled'" disabled name="radio-button-on"></ion-icon>
+        <ion-icon slot="start" *ngIf="item.status==='inactive'" color="danger" disabled name="radio-button-on">
+        </ion-icon>
+        <ion-label>
+          <p>{{item.type}}&nbsp;&nbsp; <b style="color: white;" *ngIf="item.status==='active'">{{item.value}} ppm</b>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-card-content>
+        <ion-button fill="outline" color="primary" expand="block" (click)="AddZone($event, i)">
+          <ion-icon slot="start" name="add"></ion-icon>Szenzor
+        </ion-button>
+      </ion-card-content>
 
     </ion-card>
   </div>

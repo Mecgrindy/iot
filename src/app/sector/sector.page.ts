@@ -52,12 +52,22 @@ export class SectorPage implements OnInit {
       });
   }
 
+  UpdateZoneName(event: any, index: number) {
+    event.stopPropagation();
+    if (this.sector.zones[index].name !== event.target.children[0].value) {
+      this.sector.zones[index].name = event.target.children[0].value;
+      const zone = { id: this.sectorId, data: this.sector.zones };
+      this.httpClient.post(config.baseUrl + '/zones', zone).subscribe(() => {
+      });
+    }
+  }
+
   prevent(event: Event) {
     event.stopPropagation();
   }
 
-  navigate(id: string) {
-    this.router.navigate(['home/sectors/', id]);
+  navigate(index: number) {
+    this.router.navigate(['home/zone/', { id: this.sectorId, index }]);
   }
 
 }

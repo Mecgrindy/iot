@@ -14,3 +14,19 @@
 .space-filler {
     flex: 1 1;
 }
+
+.danger {
+    background-image: linear-gradient(to right, transparent, #d339398a);
+}
+
+.warning {
+    background-image: linear-gradient(to right, transparent, #ffcc009a);
+}
+
+.b-danger {
+    border-color: #d33939 !important;
+}
+
+.b-warning {
+    border-color: #ffcc00 !important;
+}
